@@ -7,6 +7,7 @@ SUBNET_ID="subnet-0fe01b7600ca78f77"
 INTERNET_GATEWAY_ID="igw-0ccbca4be4dceef41"
 ROUTE_TABLE_ID="rtb-01c6e91273b756584"
 KEY_PAIR_NAME="mynewapp"
+AMI_ID="ami-0fc5d935ebf8bc3bc"
 
 # 1. Create VPC
 echo "Creating VPC"
@@ -45,7 +46,7 @@ aws ec2 associate-route-table --subnet-id "$subnet_id" --route-table-id "$route_
 # Launch an EC2 instance
 echo "Launcing an EC2 instance"
 aws ec2 run-instances \
-  --image-id ami-0e35da80743b7a307 \
+  --image-id "$AMI_ID" \
   --instance-type t2.micro \
   --key-name "$KEY_PAIR_NAME" \
   --subnet-id "$subnet_id" \
